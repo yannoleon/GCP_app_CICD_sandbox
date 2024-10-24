@@ -8,7 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
-RUN make all
+RUN bash make all
 
 # Copy the rest of the working directory contents into the container at /app
 COPY . .
