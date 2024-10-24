@@ -1,3 +1,8 @@
+[![Docker Image CI](https://github.com/yannoleon/helloworld_gcp_build_deploy/actions/workflows/docker-image.yml/badge.svg)](https://github.com/yannoleon/helloworld_gcp_build_deploy/actions/workflows/docker-image.yml)
+
 # helloworld_gcp_build_deploy
-Following the tuto to build and deploy a python web service uisng gcloud ( https://cloud.google.com/run/docs/quickstarts/build-and-deploy/deploy-python-service )
-For memory setting while deployin: https://cloud.google.com/functions/docs/configuring/memory
+
+Sandbox project to deploy flask of fastapi python api on gcp.
+
+* Clone this project in your gcp project
+* In the cloud shell vscode editor launch cloud run (deploy to cloud run) and set the build to the docker file
