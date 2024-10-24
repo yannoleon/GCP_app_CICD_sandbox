@@ -9,7 +9,7 @@ def hello_world():
     return "<h1> Test flask app </h1>"
 
 @app.route('/summation', methods = ['GET', 'POST'])
-async def summation(a, b):
+def summation(a, b):
 
     s = add(a, b)
 
