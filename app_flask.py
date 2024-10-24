@@ -6,9 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    """Example Hello World route."""
-    name = os.environ.get("NAME", "World")
-    return f"Hello {name}!"
+    return "<h1> Test flask app </h1>"
 
 @app.route('/summation', methods = ['GET', 'POST'])
 async def summation(a, b):
