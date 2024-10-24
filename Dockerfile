@@ -7,6 +7,9 @@ WORKDIR /app
 # copy the requirements file used for dependencies
 COPY requirements.txt .
 
+RUN python -m venv venv
+
+RUN source venv/bin/activate
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
