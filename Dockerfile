@@ -8,7 +8,7 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
-RUN bash make all
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy the rest of the working directory contents into the container at /app
 COPY . .
