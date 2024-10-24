@@ -19,6 +19,9 @@ jobs:
   
       - name: Install dependencies
         run: make install
+
+      - name: Format and lint
+        run: make format lint
   
       - name: Run pytest
         run: make test
