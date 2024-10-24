@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, request
 from libs.calculus import add
 
 app = Flask(__name__)
@@ -8,9 +8,9 @@ app = Flask(__name__)
 def hello_world():
     return "<h1> Test flask app </h1>"
 
-@app.route('/summation', methods = ['GET', 'POST'])
-def summation(a, b):
-
+@app.route('/summation', methods = ['POST'])
+def summation():
+    a, b = request.data['a'], request.data['b']
     s = add(a, b)
 
     res = str(s)
