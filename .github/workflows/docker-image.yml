@@ -16,3 +16,12 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+pytest:
+  stage: test
+  image: python
+  script:
+    - pip install -r requirements.txt
+    - make format
+    - make lint
+    - make test
