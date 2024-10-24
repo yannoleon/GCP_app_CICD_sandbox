@@ -2,7 +2,7 @@ Flask==3.0.3
 fastapi==0.115.3
 requests==2.31.0
 uvicorn==0.32.0
-black
-pytest
-pylint
-debugpy 
+black==24.10.0
+pytest==8.3.3
+pylint==3.3.1
+debugpy==1.8.7
