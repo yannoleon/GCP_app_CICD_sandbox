@@ -6,7 +6,7 @@ url = "http://127.0.0.1:8080/summation"
 query = {
   "a": 1., "b": 2
 }
-response = requests.post(url, json=query)
+response = requests.post(url, json=query, timeout=60)
 
 # response = requests.get(url)
 
