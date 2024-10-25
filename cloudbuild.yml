@@ -1,3 +1,4 @@
+# A yml example that is supposed to allow cloud build to build the app while including tests
 steps:
   # Step 1: Set up environment and install dependencies
   - name: 'gcr.io/cloud-builders/docker'
