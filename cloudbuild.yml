@@ -1,0 +1,50 @@
+steps:
+  # Step 1: Set up environment and install dependencies
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        python -m venv venv
+        source venv/bin/activate
+        make install
+
+  # Step 2: Run tests with pytest
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        source venv/bin/activate
+        make format
+        make lint
+        make test
+
+  # Step 3: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', '-t', 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA', '.'
+    ]
+
+  # Step 4: Push the Docker image to Google Container Registry (GCR)
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push', 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA'
+    ]
+
+  # Step 5: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args: [
+      'run', 'deploy', 'myapp',
+      '--image', 'gcr.io/$PROJECT_ID/myapp:$COMMIT_SHA',
+      '--region', 'us-central1',
+      '--platform', 'managed',
+      '--allow-unauthenticated'
+    ]
+
+# Substitutions (optional)
+substitutions:
+  _REGION: "us-central1"
+
+timeout: "1200s"  # Set timeout for the build
